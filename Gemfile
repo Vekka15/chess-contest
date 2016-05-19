@@ -23,6 +23,13 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'haml'
+gem 'haml-rails'
+gem 'simple_form', '>= 3.0.0'
+gem 'devise', '>= 3.0.0'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'ransack'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -35,6 +42,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'minitest-rails', '>= 2.0.0.beta1'
+  gem 'factory_girl_rails'
+
 end
 
 group :development do
@@ -44,4 +54,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
