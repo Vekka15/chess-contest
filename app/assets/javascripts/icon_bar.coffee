@@ -1,4 +1,4 @@
-$ ->
+ready = ->
   $icon = $('.icon')
   $text = $('.text')
   $text.hide()
@@ -9,3 +9,6 @@ $ ->
 
     $(ele).mouseleave ->
       $(element).toggle( "slide" )
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

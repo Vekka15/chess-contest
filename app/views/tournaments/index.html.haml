@@ -1,4 +1,4 @@
-= link_to 'new', new_tournament_path
-= @tournaments.each do |t|
-  %p= t.name
-  %p= t.time
+%h1
+  Recent tournaments
+  = link_to 'new', new_tournament_path, class: 'btn btn-success'
+= render partial: 'tournament', collection: @tournaments
