@@ -1,6 +1,8 @@
 ready = ->
+  $calendar = $('.show_calendar')
   $icon = $('.icon')
   $text = $('.text')
+  $calendar.datepicker()
   $text.hide()
   $icon.each (item, ele) =>
     element = $text[item]

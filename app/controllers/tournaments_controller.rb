@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
   def index
-    @tournaments = Tournament.all
+    @tournaments = Tournament.order("name").page(params[:page]).per(5)
   end
 
   def new
@@ -26,4 +26,6 @@ class TournamentsController < ApplicationController
     params.require(:tournament).permit(:name, :user_id,
                                        :time, :participation_limit, :deadline)
   end
+
+  before_filter :authenticate_user!, except: [:index]
 end

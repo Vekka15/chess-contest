@@ -1,4 +1,11 @@
-= simple_form_for @tournament do |t|
-  = t.input :name
-  = t.input :time
-  = t.button :submit
+.container
+  %h1 New tournament
+  = form_for(@tournament, html: { class: 'form-horizontal center col-md-8' }) do |t|
+    .form-group
+      = t.label :name, class: "control-label"
+      = t.text_field :name, class: "form-control"
+    .form-group
+      = t.label :time, class: "control-label"
+      = t.date_field :time, class: "form-control show_calendar"
+    .form-group
+      = t.button :submit, class: 'btn btn-default'

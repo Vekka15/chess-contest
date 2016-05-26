@@ -1,5 +1,6 @@
 %h1
   Recent tournaments
-  = link_to 'new', new_tournament_path, class: 'btn btn-success'
+  = link_to 'NEW', new_tournament_path, class: 'btn btn-success'
 = render partial: 'tournament', collection: @tournaments
-= paginate
+.btn.btn-deafult
+  = paginate @tournaments

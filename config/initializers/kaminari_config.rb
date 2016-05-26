@@ -1,5 +1,5 @@
 Kaminari.configure do |config|
-  config.page_method_name = :per_page_kaminari
+  config.page_method_name = :page
   # config.max_per_page = nil
   # config.window = 4
   # config.outer_window = 0
