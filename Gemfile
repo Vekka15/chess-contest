@@ -29,12 +29,9 @@ gem 'simple_form', '>= 3.0.0'
 gem 'devise', '>= 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'ransack'
-gem 'bootstrap-datepicker-rails'
-gem 'jquery-ui-rails'
-group :assets do
-
-end
-
+gem 'font-awesome-rails'
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

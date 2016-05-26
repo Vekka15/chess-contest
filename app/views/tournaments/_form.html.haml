@@ -6,6 +6,7 @@
       = t.text_field :name, class: "form-control"
     .form-group
       = t.label :time, class: "control-label"
+      = fa_icon 'calendar'
       = t.date_field :time, class: "form-control show_calendar"
     .form-group
       = t.button :submit, class: 'btn btn-default'
