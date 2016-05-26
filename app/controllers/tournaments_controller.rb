@@ -1,4 +1,4 @@
-class TournamentsController < ApplicationController
+table-footbasll-contestclass TournamentsController < ApplicationController
   def index
     @tournaments = Tournament.all
   end
