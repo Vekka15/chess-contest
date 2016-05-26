@@ -30,6 +30,9 @@ gem 'devise', '>= 3.0.0'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'ransack'
 gem 'font-awesome-rails'
+gem 'client_side_validations'
+gem 'gmaps4rails'
+gem 'validates_timeliness', '~> 4.0'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 

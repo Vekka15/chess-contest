@@ -1,12 +1,21 @@
 .container
   %h1 New tournament
-  = form_for(@tournament, html: { class: 'form-horizontal center col-md-8' }) do |t|
+  = form_for(@tournament, html: { class: 'form-horizontal center col-md-8' }, validate: true) do |t|
     .form-group
       = t.label :name, class: "control-label"
       = t.text_field :name, class: "form-control"
-    .form-group
-      = t.label :time, class: "control-label"
+
+      = t.label :deadline, class: "control-label"
       = fa_icon 'calendar'
-      = t.date_field :time, class: "form-control show_calendar"
+      = t.date_field :deadline, class: "form-control show_calendar"
+      .row
+        .col-xs-6
+          = t.label :street, class: "control-label"
+          = t.text_field  :street, class: "form-control"
+        .col-xs-6
+          = t.label :city, class: "control-label"
+          = t.text_field  :city, class: "form-control"
+      = t.label :participation_limit, class: "control-label"
+      = t.text_field  :participation_limit, class: "form-control"
     .form-group
       = t.button :submit, class: 'btn btn-default'
