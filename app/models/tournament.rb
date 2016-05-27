@@ -1,8 +1,9 @@
 class Tournament < ActiveRecord::Base
   belongs_to :user
   has_many :participations
+  before_validation :fix_address, only: [:create]
 
-  geocoded_by :street   # can also be an IP address
+  geocoded_by :full_street_address   # can also be an IP address
   after_validation :geocode
 
   scope :finished, -> { where("deadline < ?", Date.today) }
@@ -38,6 +39,11 @@ class Tournament < ActiveRecord::Base
 
   def check_if_participate(user)
     @state = self.participations.where(user_id: user).empty?
+  end
+
+  def fix_address
+    binding.pry
+    self.full_street_address = self.street + ", " + self.city
   end
 
 end

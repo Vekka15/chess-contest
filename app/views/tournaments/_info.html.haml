@@ -15,8 +15,9 @@
 
 :javascript
   handler = Gmaps.build('Google');
-  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  handler.buildMap({ provider: {Zoom: 10}, internal: {id: 'map'}}, function(){
   tournament = #{@tournament.to_json}
+
   markers = handler.addMarkers([
     {
       "lat": tournament.latitude,
@@ -31,4 +32,5 @@
   ]);
   handler.bounds.extendWith(markers);
   handler.fitMapToBounds();
+    handler.getMap().setZoom(15);
   });
