@@ -2,6 +2,9 @@ class Tournament < ActiveRecord::Base
   belongs_to :user
   has_many :participations
 
+  geocoded_by :street   # can also be an IP address
+  after_validation :geocode
+
   scope :finished, -> { where("deadline < ?", Date.today) }
   scope :unfinished, -> { where("deadline >= ?", Date.today) }
 

@@ -33,6 +33,7 @@ gem 'font-awesome-rails'
 gem 'client_side_validations'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'geocoder'
 gem 'pry'
 gem 'validates_timeliness', '~> 4.0'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',

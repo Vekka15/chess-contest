@@ -13,18 +13,22 @@ class TournamentsController < ApplicationController
     if params[:tab] == 'brackets'
       params[:tab] = 'brackets'
       @tournament = Tournament.find(params[:id])
+      @hash = Gmaps4rails.build_markers(@tournament) do |tournament, marker|
+        marker.lat tournament.latitude
+        marker.lng tournament.longitude
+      end
     else
       params[:tab] = 'info'
       @tournament = Tournament.find(params[:id])
+      @hash = Gmaps4rails.build_markers(@tournament) do |tournament, marker|
+        marker.lat tournament.latitude
+        marker.lng tournament.longitude
+      end
     end
   end
 
   def new
     @tournament = Tournament.new
-  end
-
-  def show
-    @tournament = Tournament.find(params[:id])
   end
 
   def create
@@ -42,7 +46,7 @@ class TournamentsController < ApplicationController
   def tournament_params
     params.require(:tournament).permit(:name, :user_id,
                                        :participation_limit, :deadline,
-                                       :street, :city)
+                                       :street, :city, :full_street_address)
   end
 
   before_filter :authenticate_user!, except: [:index]

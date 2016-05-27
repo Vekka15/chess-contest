@@ -16,6 +16,19 @@
 :javascript
   handler = Gmaps.build('Google');
   handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-    
-    handler.fitMapToBounds();
+  tournament = #{@tournament.to_json}
+  markers = handler.addMarkers([
+    {
+      "lat": tournament.latitude,
+      "lng": tournament.longitude,
+      "picture": {
+        "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+        "width":  32,
+        "height": 32
+      },
+      "infowindow": "hello!"
+    }
+  ]);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
   });
