@@ -9,6 +9,16 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def show
+    if params[:tab] == 'brackets'
+      params[:tab] = 'brackets'
+      @tournament = Tournament.find(params[:id])
+    else
+      params[:tab] = 'info'
+      @tournament = Tournament.find(params[:id])
+    end
+  end
+
   def new
     @tournament = Tournament.new
   end
@@ -18,11 +28,8 @@ class TournamentsController < ApplicationController
   end
 
   def create
-    binding.pry
     params[:tournament][:deadline] = Date.strptime(params[:tournament][:deadline], "%m/%d/%Y")
-        binding.pry
     @tournament = Tournament.new(tournament_params)
-    binding.pry
     if @tournament.save
       respond_to do |format|
         format.html { redirect_to root_path}

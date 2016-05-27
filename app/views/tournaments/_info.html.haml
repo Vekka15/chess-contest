@@ -1,0 +1,21 @@
+%p
+  Deadline:
+  = @tournament.deadline
+  %br
+  Street:
+  = @tournament.street
+  %br
+  City:
+  = @tournament.city
+  %br
+  %div{style: 'width: 800px'}
+    %script{ src: "//maps.google.com/maps/api/js?v=3.23&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="}
+    %script{src: "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+    %div#map{style: 'width: 800px; height: 400px;'}
+
+:javascript
+  handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    
+    handler.fitMapToBounds();
+  });

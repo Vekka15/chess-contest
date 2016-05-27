@@ -1,8 +1,10 @@
 .panel.panel-default
   .panel-heading
     = tournament.name.upcase
-    .pull-right
-      = fa_icon 'info-circle'
+    .pull-right{style: 'font-size: 20px;'}
+      = link_to tournament_path(tournament, tab: 'info') do
+        = fa_icon 'info-circle'
+        More
   .panel-body
     Deadline:
     = tournament.deadline

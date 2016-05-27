@@ -1,1 +1,8 @@
-= render 'tournament'
+%h1= @tournament.name
+%ul.nav.nav-tabs
+  %li{class: ('active' if params[:tab] == 'info') }
+    = link_to 'Info', tournament_path(tab: 'info')
+  %li{class: ('active' if params[:tab] == 'brackets') }
+    = link_to 'Brackets', tournament_path(tab: 'brackets')
+.tab-content{ style: 'background-color: white'}
+  = render partial: 'info', object: @tournament
