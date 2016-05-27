@@ -15,7 +15,7 @@ class TournamentsController < ApplicationController
     @tournament = Tournament.new(tournament_params)
     if @tournament.save
       respond_to do |format|
-        format.html { redirect_to tournament_path(@tournament) }
+        format.html { redirect_to root_path}
       end
     else
       render :new
@@ -24,7 +24,8 @@ class TournamentsController < ApplicationController
 
   def tournament_params
     params.require(:tournament).permit(:name, :user_id,
-                                       :time, :participation_limit, :deadline)
+                                       :participation_limit, :deadline,
+                                       :street, :city)
   end
 
   before_filter :authenticate_user!, except: [:index]

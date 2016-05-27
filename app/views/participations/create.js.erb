@@ -1,0 +1,7 @@
+$(document).ready(function(){
+  $(".error").html('<%= j render partial: "shared/error" %>');
+  console.log('test');
+  $('.exit').click(function() {
+    $('.error').html("");
+  });
+});

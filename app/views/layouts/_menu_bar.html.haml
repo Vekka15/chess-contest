@@ -1,7 +1,7 @@
 %nav.navbar.navbar-default.navbar-inverse.navbar-static-top{ role: 'navigation' }
   .container
     .navbar-header
-      %a.navbar-brand{href: '/tournaments/new'} TableFootball
+      %a.navbar-brand{href: '/tournaments'} TableFootball
     .collapse.navbar-collapse.navbar-collapse-top
       %ul.nav.navbar-right.navbar-nav
         %li
@@ -13,3 +13,9 @@
           %a
             %span.text PARTICIPATION
             %span.glyphicon.glyphicon-calendar.icon
+        - unless current_user.nil?
+          %li
+            = link_to destroy_user_session_path do
+              %span.text LOG-OUT
+              %span.glyphicon.glyphicon-log-out.icon
+-# {style: 'font-size: 20px; border-left: solid; padding-top: 100%;' }
