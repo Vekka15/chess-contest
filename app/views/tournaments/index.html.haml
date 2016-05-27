@@ -2,6 +2,12 @@
 %h1
   Recent tournaments
   = link_to 'NEW', new_tournament_path, class: 'btn btn-success'
-= render partial: 'tournament', collection: @tournaments
-.btn.btn-deafult
-  = paginate @tournaments
+%ul.nav.nav-tabs
+  %li{class: ('active' if params[:tab] == 'incoming') }
+    = link_to 'Incoming', tournaments_path(tab: 'incoming')
+  %li{class: ('active' if params[:tab] == 'finished') }
+    = link_to 'Finished', tournaments_path(tab: 'finished')
+.tab-content
+  = render partial: 'tournament', collection: @tournaments
+  .btn.btn-deafult
+    = paginate @tournaments

@@ -2,7 +2,7 @@ ready = ->
   $calendar = $('.show_calendar')
   $icon = $('.icon')
   $text = $('.text')
-  $calendar.datepicker();
+  $calendar.datepicker(dateFormat: "yyyy-mm-dd");
   $text.hide()
   $icon.each (item, ele) =>
     element = $text[item]

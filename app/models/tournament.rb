@@ -2,12 +2,16 @@ class Tournament < ActiveRecord::Base
   belongs_to :user
   has_many :participations
 
+  scope :finished, -> { where("deadline < ?", Date.today) }
+  scope :unfinished, -> { where("deadline >= ?", Date.today) }
+
   validates :name,
     presence: { message: 'Name is required' },
     uniqueness: { message: 'Tournament with this name already exists' }
 
-  validates_date :deadline,
+  validates :deadline,
     presence: {message: 'Deadline is required'}
+    # format: {with: /[0-3]{1}[0-9]{1}\/[0-1]{1}[0-9]{1}\/[1-2]{1}[0-9]{3}/, message: "Time is in wrong format"}
     # date: { after: Proc.new { Date.today }}
 
   validates :participation_limit,
@@ -27,6 +31,10 @@ class Tournament < ActiveRecord::Base
 
   def check_participation_limit
     @state = self.participations.size == self.participation_limit ? true : false
+  end
+
+  def check_if_participate(user)
+    @state = self.participations.where(user_id: user).empty?
   end
 
 end

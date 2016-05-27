@@ -9,7 +9,7 @@
 
           = t.label :deadline, class: "control-label"
           = fa_icon 'calendar'
-          = t.date_field :deadline, class: "form-control show_calendar"
+          = t.date_field :deadline, class: "form-control show_calendar", order: [:day, :month, :year], date_separator: "/"
           .row
             .col-xs-6
               = t.label :street, class: "control-label"

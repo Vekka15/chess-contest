@@ -5,12 +5,22 @@ class ParticipationsController < ApplicationController
                                       tournament_id: params[:tournament_id])
     if participation.save
       respond_to do |format|
-        format.js
+        format.js {}
       end
     else
       respond_to do |format|
-        format.js {flash[:error] = 'You already participate in this tournament'}
+        flash[:error] = 'You already participate in this tournament'
+        format.js {render status: 500 }
       end
+    end
+  end
+
+  def destroy
+    participation = Participation.find(params[:id])
+    if participation.destroy
+      redirect_to root_path
+    else
+      redirect_to root_path
     end
   end
 end

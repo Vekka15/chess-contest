@@ -1,7 +1,25 @@
-$(document).ready(function(){
+// $(document).ready(function(){
+//   $('#reportform').on('ajax:error', function(e, data, status, xhr){
+//     $(".error").html('<%= j render partial: "shared/error" %>');
+//     console.log('error');
+//     $('.exit').click(function() {
+//       $('.error').html("");
+//     });
+//   }).on('ajax:success',function(e, xhr, status, error){
+//     console.log('success');
+//     location.reload();
+//   });
+// });
+
+$(document).on('ajax:success','.participate', function(e) {
+  console.log('success');
+      location.reload();
+});
+
+$(document).on('ajax:error', '.participate', function(e) {
   $(".error").html('<%= j render partial: "shared/error" %>');
-  console.log('test');
-  $('.exit').click(function() {
-    $('.error').html("");
-  });
+      console.log('error');
+      $('.exit').click(function() {
+        $('.error').html("");
+      });
 });
