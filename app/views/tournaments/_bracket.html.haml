@@ -6,46 +6,20 @@
   %div.demo
 
 :javascript
-  var doubleElimination = {
-  "teams": [
-    ["Team 1", "Team 2"],
-    ["Team 3", "Team 4"]
-  ],
-  "results": [            // List of brackets (three since this is double elimination)
-    [                     // Winner bracket
-      [[1, 2], [3, 4]],   // First round and results
-      [[5, 6]]            // Second round
+  $(document).ready(function(){
+    duels = #{@duels.to_json}
+    var doubleElimination = {
+
+    "teams": [
+      [duels[0].user_one_id, duels[0].user_two_id],
+      [duels[1].user_one_id, duels[1].user_two_id]
     ],
-    [                     // Loser bracket
-      [[7, 8]],           // First round
-      [[9, 10]]           // Second round
-    ],
-    [                     // Final "bracket"
-      [                   // First round
-        [11, 12],         // Match to determine 1st and 2nd
-        [13, 14]          // Match to determine 3rd and 4th
-      ],
-      [                   // Second round
-        [15, 16]          // LB winner won first round (11-12) so need a final decisive round
-      ]
-    ]
-  ]
-  }
+    results : []
+    }
 
+    $('.demo').bracket({
+      init: doubleElimination,
+      save: function(){}
 
-
-  $('.demo').bracket({
-    init: doubleElimination
-  });
-
-  $('.demo').bracket({
-    init: null, // data to initialize
-    save: null, // called whenever bracket is modified
-    userData: null, // custom user data
-    onMatchClick: null, // callback
-    onMatchHover: null, // callback
-    decorator: null, // a function
-    skipSecondaryFinal: false,
-    skipGrandFinalComeback: false,
-    dir: 'rl', // "rl" or  "lr"
+    });
   });

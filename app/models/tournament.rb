@@ -1,6 +1,7 @@
 class Tournament < ActiveRecord::Base
   belongs_to :user
   has_many :participations
+  has_many :duels
   before_validation :fix_address, only: [:create]
 
   geocoded_by :full_street_address   # can also be an IP address

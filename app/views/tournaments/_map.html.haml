@@ -1,0 +1,32 @@
+
+%p{style: 'margin-top: 1%'}
+
+  %div{style: 'width: 800px'}
+    %script{ src: "//maps.google.com/maps/api/js?v=3.23&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="}
+    %script{src: "//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"}
+    %div#map{style: 'width: 800px; height: 400px;'}
+
+:javascript
+  $(document).ready(function(){
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {Zoom: 10}, internal: {id: 'map'}}, function(){
+    tournament = #{@tournament.to_json}
+
+    markers = handler.addMarkers([
+      {
+        "lat": tournament.latitude,
+        "lng": tournament.longitude,
+        "picture": {
+          "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
+          "width":  32,
+          "height": 32
+        },
+        "infowindow": "hello!"
+      }
+    ]);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+      handler.getMap().setZoom(15);
+    });
+
+  });

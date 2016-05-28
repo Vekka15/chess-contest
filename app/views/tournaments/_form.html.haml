@@ -4,6 +4,7 @@
     .col-xs-7
       = form_for(@tournament, validate: true) do |t|
         .form-group
+          = t.hidden_field :user_id, value: current_user.id
           = t.label :name, class: "control-label"
           = t.text_field :name, class: "form-control"
 

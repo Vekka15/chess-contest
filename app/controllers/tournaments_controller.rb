@@ -13,12 +13,12 @@ class TournamentsController < ApplicationController
     if params[:tab] == 'brackets'
       params[:tab] = 'brackets'
       @tournament = Tournament.find(params[:id])
-      @hash = Gmaps4rails.build_markers(@tournament) do |tournament, marker|
-        marker.lat tournament.latitude
-        marker.lng tournament.longitude
-      end
-    else
+      @duels = @tournament.duels
+    elsif params[:tab] == 'info'
       params[:tab] = 'info'
+      @tournament = Tournament.find(params[:id])
+    else
+      params[:tab] = 'map'
       @tournament = Tournament.find(params[:id])
       @hash = Gmaps4rails.build_markers(@tournament) do |tournament, marker|
         marker.lat tournament.latitude

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'tournaments#index'
-  resources :tournaments, only: [:index, :new, :create, :show]
+  resources :tournaments, only: [:index, :new, :create, :show, :edit, :update]
   resources :participations, only: [:create, :destroy]
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   # The priority is based upon order of creation: first created -> highest priority.

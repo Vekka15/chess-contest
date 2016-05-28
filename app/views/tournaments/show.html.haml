@@ -1,11 +1,19 @@
-%h1= @tournament.name
+%h1
+  = @tournament.name
+  - if current_user.id == @tournament.user_id
+    = link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-success'
 %ul.nav.nav-tabs
   %li{class: ('active' if params[:tab] == 'info') }
     = link_to 'Info', tournament_path(tab: 'info')
   %li{class: ('active' if params[:tab] == 'brackets') }
     = link_to 'Brackets', tournament_path(tab: 'brackets')
-.tab-content{ style: 'background-color: white'}
-  - if params[:tab] == 'info'
-    = render partial: 'info', object: @tournament
-  - elsif params[:tab] == 'brackets'
-    = render partial: 'bracket', object: @tournament
+  %li{class: ('active' if params[:tab] == 'map') }
+    = link_to 'Map', tournament_path(tab: 'map')
+.tab-content{ style: 'background-color: white;'}
+  .container
+    - if params[:tab] == 'info'
+      = render partial: 'info', object: @tournament
+    - elsif params[:tab] == 'brackets'
+      = render partial: 'bracket', object: @tournament
+    - elsif params[:tab] == 'map'
+      = render partial: 'map', object: @tournament
