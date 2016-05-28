@@ -43,7 +43,6 @@ class Tournament < ActiveRecord::Base
   end
 
   def fix_address
-    binding.pry
     self.full_street_address = self.street + ", " + self.city
   end
 

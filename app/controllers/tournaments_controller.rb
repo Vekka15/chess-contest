@@ -9,6 +9,19 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def edit
+    @tournament = Tournament.find(params[:id])
+  end
+
+  def update
+    @tournament = Tournament.find(params[:id])
+    if @tournament.update(tournament_params)
+      redirect_to tournament_path(@tournament)
+    else
+      render :edit
+    end
+  end
+
   def show
     if params[:tab] == 'brackets'
       params[:tab] = 'brackets'
@@ -39,6 +52,7 @@ class TournamentsController < ApplicationController
         format.html { redirect_to root_path}
       end
     else
+      params[:tab] = 'info'
       render :new
     end
   end

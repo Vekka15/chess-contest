@@ -6,20 +6,15 @@
       %ul.nav.navbar-right.navbar-nav
         - unless current_user.nil?
           %li
-            %a
+            = link_to user_path(current_user) do
               %span.text PROFILE
               %span.glyphicon.glyphicon-user.icon
-
-          %li
-            %a
-              %span.text PARTICIPATION
-              %span.glyphicon.glyphicon-calendar.icon
 
           %li
             = link_to destroy_user_session_path, method: :delete do
               %span.text LOG-OUT
               %span.glyphicon.glyphicon-log-out.icon
-        - if current_user.nil?
+        - else
           %li
             = link_to new_user_session_path do
               %span.text LOG-IN

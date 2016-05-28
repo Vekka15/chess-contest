@@ -10,16 +10,19 @@
 //     location.reload();
 //   });
 // });
+$(document).ready(function(){
+  console.log('test');
+  $( document ).ajaxSuccess(function() {
+    console.log('success');
+        location.reload();
+  });
 
-$(document).on('ajax:success','.participate', function(e) {
-  console.log('success');
-      location.reload();
-});
-
-$(document).on('ajax:error', '.participate', function(e) {
-  $(".error").html('<%= j render partial: "shared/error" %>');
-      console.log('error');
-      $('.exit').click(function() {
-        $('.error').html("");
-      });
+  $( document ).ajaxError(function() {
+    console.log('error');
+    $(".error").html('<%= j render partial: "shared/error" %>');
+        console.log('error');
+        $('.exit').click(function() {
+          $('.error').html("");
+        });
+  });
 });

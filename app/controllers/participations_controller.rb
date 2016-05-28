@@ -9,7 +9,11 @@ class ParticipationsController < ApplicationController
       end
     else
       respond_to do |format|
-        flash[:error] = 'You already participate in this tournament'
+        if current_user.nil?
+          flash[:error] = 'You need to log in to participate'
+        else
+          flash[:error] = 'You already participate in this tournament'
+        end
         format.js {render status: 500 }
       end
     end
