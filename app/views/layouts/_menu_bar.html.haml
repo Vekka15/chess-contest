@@ -4,36 +4,28 @@
       %a.navbar-brand{href: '/tournaments'} TableFootball
     .collapse.navbar-collapse.navbar-collapse-top
       %ul.nav.navbar-right.navbar-nav
-        %li
-          %a
-            %span.text PROFILE
-            %span.glyphicon.glyphicon-user.icon
-
-        %li
-          %a
-            %span.text PARTICIPATION
-            %span.glyphicon.glyphicon-calendar.icon
         - unless current_user.nil?
           %li
-            = link_to destroy_user_session_path do
+            %a
+              %span.text PROFILE
+              %span.glyphicon.glyphicon-user.icon
+
+          %li
+            %a
+              %span.text PARTICIPATION
+              %span.glyphicon.glyphicon-calendar.icon
+
+          %li
+            = link_to destroy_user_session_path, method: :delete do
               %span.text LOG-OUT
               %span.glyphicon.glyphicon-log-out.icon
--# {style: 'font-size: 20px; border-left: solid; padding-top: 100%;' }
-
-:javascript
-  ready = ->
-    $calendar = $('.show_calendar')
-    $icon = $('.icon')
-    $text = $('.text')
-    $calendar.datepicker(dateFormat: "yyyy-mm-dd");
-    $text.hide()
-    $icon.each (item, ele) =>
-      element = $text[item]
-      $(ele).mouseenter ->
-        $(element).toggle( "slide")
-
-      $(ele).mouseleave ->
-        $(element).toggle( "slide")
-
-  $(document).ready(ready)
-  $(document).on('page:load', ready)
+        - if current_user.nil?
+          %li
+            = link_to new_user_session_path do
+              %span.text LOG-IN
+              %span.glyphicon.glyphicon-log-in.icon
+          %li
+            = link_to new_user_registration_path do
+              %span.text SIGN-UP
+              %span.icon{style: 'font-size: 25px; margin: 0; padding: 0'}
+                = fa_icon 'user-plus'
