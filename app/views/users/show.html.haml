@@ -14,6 +14,9 @@
       %h4 Incoming tournaments:
       - current_user.participations.each do |p|
         .panel.panel-default
+          .pull-right
+            = link_to tournament_path(p.tournament, tab: 'info') do
+              %span.glyphicon.glyphicon-chevron-right
           Name:
           = p.tournament.name
           %br
@@ -23,6 +26,7 @@
           Owner:
           = p.tournament.user.first_name
           = p.tournament.user.last_name
+
     .col-md-4
       %h4 Incoming duels:
       - current_user.duels.each do |d|
@@ -48,6 +52,9 @@
       %h4 Created tournaments:
       - current_user.tournaments.each do |t|
         .panel.panel-default
+          .pull-right
+            = link_to tournament_path(t, tab: 'info') do
+              %span.glyphicon.glyphicon-chevron-right
           Name:
           = t.name
           %br

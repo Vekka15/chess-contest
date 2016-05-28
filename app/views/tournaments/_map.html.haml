@@ -7,7 +7,9 @@
     %div#map{style: 'width: 800px; height: 400px;'}
 
 :javascript
+
   $(document).ready(function(){
+    console.log('test')
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {Zoom: 10}, internal: {id: 'map'}}, function(){
     tournament = #{@tournament.to_json}
@@ -28,5 +30,4 @@
     handler.fitMapToBounds();
       handler.getMap().setZoom(15);
     });
-
   });

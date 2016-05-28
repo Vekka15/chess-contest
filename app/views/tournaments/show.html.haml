@@ -8,7 +8,7 @@
   %li{class: ('active' if params[:tab] == 'brackets') }
     = link_to 'Brackets', tournament_path(tab: 'brackets')
   %li{class: ('active' if params[:tab] == 'map') }
-    = link_to 'Map', tournament_path(tab: 'map')
+    = link_to 'Map', tournament_path(tab: 'map'), data: { no_turbolink: true }
 .tab-content{ style: 'background-color: white;'}
   .container
     - if params[:tab] == 'info'
