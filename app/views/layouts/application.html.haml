@@ -3,12 +3,13 @@
   %head
     %title Table football
     = stylesheet_link_tag    'application', 'http://fonts.googleapis.com/css?family=Lobster', 'https://fonts.googleapis.com/css?family=Ubuntu', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+
+    = javascript_include_tag :defaults
     = javascript_include_tag 'icon_bar.coffee'
     = javascript_include_tag :defaults, "rails.validations", "rails.validations.custom"
-    = javascript_include_tag :defaults
-    = javascript_include_tag "jquery-1.11.3.minjs"
-    = javascript_include_tag "brackets.min.js"
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = javascript_include_tag "jquery.bracket.min.js"
+
     = csrf_meta_tags
   %body
     = render partial: 'layouts/menu_bar'
