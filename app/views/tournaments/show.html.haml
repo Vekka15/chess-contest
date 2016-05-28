@@ -5,4 +5,7 @@
   %li{class: ('active' if params[:tab] == 'brackets') }
     = link_to 'Brackets', tournament_path(tab: 'brackets')
 .tab-content{ style: 'background-color: white'}
-  = render partial: 'info', object: @tournament
+  - if params[:tab] == 'info'
+    = render partial: 'info', object: @tournament
+  - elsif params[:tab] == 'brackets'
+    = render partial: 'bracket', object: @tournament

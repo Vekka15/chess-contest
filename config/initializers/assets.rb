@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( icon_bar.coffee )
 Rails.application.config.assets.precompile += %w( rails.validations.js )
+Rails.application.config.assets.precompile += %w( brackets.min.js )
+Rails.application.config.assets.precompile += %w( "jquery-1.11.3.js )
