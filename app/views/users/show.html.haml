@@ -10,55 +10,51 @@
     Email:
     = current_user.email
   .row
-    .col-sm-4
+    .col-md-4
       %h4 Incoming tournaments:
       - current_user.participations.each do |p|
-        .row{style: 'margin-left: 1%; margin-bottom: 1px'}
-          .panel.panel-default
-            Name:
-            = p.tournament.name
-            %br
-            Deadline:
-            = p.tournament.deadline
-            %br
-            Owner:
-            = p.tournament.user.first_name
-            = p.tournament.user.last_name
-    .col-sm-4
+        .panel.panel-default
+          Name:
+          = p.tournament.name
+          %br
+          Deadline:
+          = p.tournament.deadline
+          %br
+          Owner:
+          = p.tournament.user.first_name
+          = p.tournament.user.last_name
+    .col-md-4
       %h4 Incoming duels:
       - current_user.duels.each do |d|
-        .row{style: 'margin-left: 1%; margin-bottom: 1px'}
-          .panel.panel-default.col-sm-4
-            = d.user_one.first_name
-            = d.user_one.last_name
-            %br
-            vs
-            %br
-            = d.user_two.first_name
-            = d.user_two.last_name
+        .panel.panel-default
+          = d.user_one.first_name
+          = d.user_one.last_name
+          %br
+          vs
+          %br
+          = d.user_two.first_name
+          = d.user_two.last_name
       - current_user.duels_two.each do |d|
-        .row{style: 'margin-left: 1%; margin-bottom: 1px'}
-          .panel.panel-default.col-sm-4
-            = d.user_one.first_name
-            = d.user_one.last_name
-            %br
-            vs
-            %br
-            = d.user_two.first_name
-            = d.user_two.last_name
+        .panel.panel-default
+          = d.user_one.first_name
+          = d.user_one.last_name
+          %br
+          vs
+          %br
+          = d.user_two.first_name
+          = d.user_two.last_name
 
-    .col-sm-4
+    .col-md-4
       %h4 Created tournaments:
       - current_user.tournaments.each do |t|
-        .row{style: 'margin-left: 1%; margin-bottom: 1px'}
-          .panel.panel-default.col-sm-4
-            Name:
-            = t.name
-            %br
-            Deadline:
-            = t.deadline
-            %br
-            Part:
-            = t.participation_number
-            /
-            = t.participation_limit
+        .panel.panel-default
+          Name:
+          = t.name
+          %br
+          Deadline:
+          = t.deadline
+          %br
+          Part:
+          = t.participation_number
+          %span /
+          = t.participation_limit
