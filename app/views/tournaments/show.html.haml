@@ -1,7 +1,8 @@
 %h1
   = @tournament.name
-  - if current_user.id == @tournament.user_id
-    = link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-success'
+  - unless current_user.nil?
+    - if current_user.id == @tournament.user_id
+      = link_to 'Edit', edit_tournament_path(@tournament), class: 'btn btn-success'
 %ul.nav.nav-tabs
   %li{class: ('active' if params[:tab] == 'info') }
     = link_to 'Info', tournament_path(tab: 'info')

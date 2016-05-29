@@ -38,6 +38,7 @@ gem 'pry'
 gem 'sidekiq'
 gem 'jquery-turbolinks'
 gem 'validates_timeliness', '~> 4.0'
+gem 'clockwork'
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 
