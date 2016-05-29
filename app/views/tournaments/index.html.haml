@@ -2,6 +2,17 @@
 %h1
   Recent tournaments
   = link_to 'NEW', new_tournament_path, class: 'btn btn-success'
+%p
+  .form-group
+    = search_form_for @q do |f|
+      .input-group
+        - if params[:tab] == 'finished'
+          = hidden_field_tag :tab, 'finished'
+        - else
+          = hidden_field_tag :tab, 'incomming'
+        = f.search_field :name_cont, placeholder: 'Name', class: "form-control", style: 'width: 200px'
+        = f.search_field :city_cont, placeholder: 'City', class: "form-control", style: 'width: 200px'
+        = f.submit class: 'btn btn-default'
 %ul.nav.nav-tabs
   %li{class: ('active' if params[:tab] == 'incoming') }
     = link_to 'Incoming', tournaments_path(tab: 'incoming')

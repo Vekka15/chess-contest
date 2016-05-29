@@ -1,11 +1,13 @@
 class TournamentsController < ApplicationController
   def index
+    @q = Tournament.ransack(params[:q])
+    binding.pry
     if params[:tab]=='finished'
       params[:tab] = 'finished'
-      @tournaments = Tournament.finished.order("name").page(params[:page]).per(5)
+      @tournaments = @q.result.finished.order("name").page(params[:page]).per(5)
     else
       params[:tab] = 'incoming'
-      @tournaments = Tournament.unfinished.order("name").page(params[:page]).per(5)
+      @tournaments = @q.result.unfinished.order("name").page(params[:page]).per(5)
     end
   end
 
